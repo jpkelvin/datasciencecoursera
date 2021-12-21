@@ -1,0 +1,35 @@
+---
+title: "Creating Map with Leaflet"
+author: "J Prince Kelvin"
+date: "12/20/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## My First Leaflet Map
+Create a leaflet map object.
+```{r cars}
+library(leaflet)
+map <- leaflet() %>% addTiles()
+```
+
+Create a marker with a picture of Bangalore and a link to its wikipedia.
+```{r}
+icon <- makeIcon(
+   iconUrl = "http://trojmiasto-transport.pl/wp-content/uploads/2014/10/map-marker.png",
+   iconWidth = 30*408/255, iconHeight = 30,
+   iconAnchorX = 30*408/255/2, iconAnchorY = 30/2
+)
+```
+
+Add the marker to the map and display the map.
+```{r}
+bangalorePopup <- c("<a href= 'https://en.wikipedia.org/wiki/Bangalore' >Bangalore<br><img src='http://trojmiasto-transport.pl/wp-content/uploads/2014/10/map-marker.png' width='210' height='132'  alt='Bangalore' title='Bangalore'></a>")
+map %>%
+   addTiles() %>%
+   addMarkers(lat=12.9716, lng=77.5946, popup = bangalorePopup)
+```
