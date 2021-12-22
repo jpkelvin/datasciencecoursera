@@ -1,0 +1,22 @@
+---
+title: "R Markdown Presentation & Plotly"
+author: "J Prince Kelvin"
+date: "12/22/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(plotly)
+```
+
+```{r}
+data(iris)
+
+plot_ly(x= iris$Sepal.Width, y= iris$Sepal.Length, z = iris$Species, 
+type = "scatter3d", mode = "markers", color = iris$Species)
+```
